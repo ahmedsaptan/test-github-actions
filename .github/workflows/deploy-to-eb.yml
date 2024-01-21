@@ -10,8 +10,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Create ZIP deployment package
-        run: zip -r deploy.zip  ./
+        run: zip -r deploy.zip ./
 
       - name: Configure AWS creds
         uses: aws-actions/configure-aws-credentials@v4
@@ -21,4 +22,4 @@ jobs:
           aws-region: us-east-2
 
       - name: Upload package to S3 bucket
-        run: aws s3 cp deploy_package.zip s3://ahmad-aws-deploy/
+        run: aws s3 cp deploy.zip s3://ahmad-aws-deploy/
